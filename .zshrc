@@ -36,7 +36,7 @@ ZSH_THEME="intheloop"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="dd.mm.yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -45,15 +45,19 @@ ZSH_THEME="intheloop"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler rake ruby debian)
+plugins=(git bundler rake ruby rails tmux archlinux)
 
 # User configuration
 # export MANPATH="/usr/local/man:$MANPATH"
 
+export ZSH_TMUX_AUTOSTART=true
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export TERM=xterm-256color
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -61,7 +65,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
-export EDITOR=vim
+export EDITOR=nvim
 export PATH=$PATH:~/packer/
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -77,9 +81,30 @@ export PATH=$PATH:~/packer/
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+# alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+
 
 if [ -f ~/.profile ]
 then
   . "${HOME}/.profile"
 fi
+
+export RBENV_ROOT=$HOME/.rbenv
+
+if [ -d "${RBENV_ROOT}" ]; then
+  export PATH="${RBENV_ROOT}/bin:${PATH}"
+  eval "$(rbenv init -)"
+fi
+
+export GO15VENDOREXPERIMENT=1
+
+export GOPATH="${HOME}/workspaces/golang"
+export PATH=$PATH:$GOPATH/bin
+export PATH="$HOME/.gobrew/bin:$PATH"
+eval "$(gobrew init -)"
+
+
+alias golf="cd ~/workspace/wordpress/eggolf/wp-content/themes/twentyseventeen-child"
+alias v=nvim
+
+KEYTIMEOUT=1
