@@ -104,7 +104,6 @@ export PATH="$HOME/.gobrew/bin:$PATH"
 eval "$(gobrew init -)"
 
 
-alias golf="cd ~/workspace/wordpress/eggolf/wp-content/themes/twentyseventeen-child"
 alias v=nvim
 
 KEYTIMEOUT=1
