@@ -1,12 +1,11 @@
 # dotfiles
 
-WIP
-
 ## System tweak
 
 * Numix theme
 * Custom launcher arrows
 * Unity Tweak Tool
+xinput --set-prop 10 'libinput Accel Speed' -0.7
 
 ### Font
 
